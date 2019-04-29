@@ -16,3 +16,7 @@ install:
 script:
   - npm run get-schema
   - $NYC npm run ${NPM_RUN_SCRIPT:-test:script:build}
+  - npm run compile
+  - npm run clean
+  - git add .
+  - git diff-index --quiet HEAD
