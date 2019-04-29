@@ -4,7 +4,7 @@ extends:
   - tslint-config-prettier
 linterOptions:
   exclude:
-    - schema.ts
+    - schema/*.ts
     - typings/*.graphql.d.ts
 rules:
   arrow-parens: false # aligning style with standard
