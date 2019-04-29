@@ -15,6 +15,4 @@ install:
 
 script:
   - npm run get-schema
-  - npm run build
-  - if [ "$NPM_RUN_LINT" = true ]; then npm run lint; fi
   - $NYC npm run ${NPM_RUN_SCRIPT:-test:script:build}
