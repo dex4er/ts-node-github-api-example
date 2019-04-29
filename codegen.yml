@@ -1,11 +1,11 @@
 overwrite: true
-schema: "schema.json"
-documents: "operations/*.graphql"
+schema: 'schema/index.json'
+documents: 'operations/*.graphql'
 generates:
-  schema.graphql:
+  schema/index.graphql:
     plugins:
       - schema-ast
-  schema.ts:
+  schema/index.ts:
     plugins:
       - typescript
       - typescript-operations

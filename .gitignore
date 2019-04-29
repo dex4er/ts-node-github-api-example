@@ -1,8 +1,11 @@
 *.js
 
 /.env
-/schema.json
-/schema.ts
+
+/schema/index.graphql
+/schema/index.json
+/schema/index.ts
+
 /typings/*.graphql.d.ts
 
 *.gz
