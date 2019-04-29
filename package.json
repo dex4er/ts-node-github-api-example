@@ -46,7 +46,7 @@
   },
   "scripts": {
     "build": "npm run graphql-codegen",
-    "clean": "shx rm -f *.js schema/*.graphql schema/*.json schema/*.ts typings/*.graphql.d.ts",
+    "clean": "shx rm -f bin/*.js schema/*.graphql schema/*.js schema/*.json schema/*.ts typings/*.graphql.d.ts",
     "compile": "tsc --pretty --project .",
     "get-schema": "ts-node --require dotenv/config bin/get-schema.ts",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
