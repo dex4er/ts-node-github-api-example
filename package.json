@@ -50,7 +50,7 @@
     "compile": "tsc --pretty --project .",
     "get-schema": "ts-node --require dotenv/config get-schema.ts",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
-    "lint": "tsc --noEmit --pretty --project . && prettier --check **/*.ts && tslint --format stylish --project . && markdownlint \"*.md\"",
+    "lint": "tsc --noEmit --pretty --project . && prettier --ignore-path .gitignore --check **/*.graphql **/*.ts && tslint --format stylish --project . && markdownlint \"*.md\"",
     "pretest": "npm run build && npm run lint",
     "test": "npm run test:script",
     "test:script": "npm run viewer-query",

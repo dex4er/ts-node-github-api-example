@@ -1,5 +1,6 @@
 query Viewer {
   viewer {
-    login name
+    login
+    name
   }
 }
