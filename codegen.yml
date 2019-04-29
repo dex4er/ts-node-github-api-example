@@ -1,0 +1,16 @@
+overwrite: true
+schema: "schema.json"
+documents: "operations/*.graphql"
+generates:
+  schema.graphql:
+    plugins:
+      - schema-ast
+  schema.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      constEnums: true
+  typings/viewer.graphql.d.ts:
+    plugins:
+      - typescript-graphql-files-modules

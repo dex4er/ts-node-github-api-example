@@ -1,0 +1,60 @@
+{
+  "name": "ts-node-github-api-example",
+  "version": "0.1.0",
+  "description": "Example of Github API v4 client written in Typescript with Apollo library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dex4er/ts-node-github-api-example"
+  },
+  "author": "Piotr Roszatycki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dex4er/ts-node-github-api-example/issues"
+  },
+  "homepage": "http://github.com/dex4er/ts-node-github-api-example",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "apollo-boost": "^0.3.1",
+    "cross-fetch": "^3.0.2",
+    "dotenv": "^7.0.0",
+    "graphql": "^14.2.1",
+    "graphql-tag-loader-register": "^1.0.4",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.1.1",
+    "@graphql-codegen/introspection": "^1.1.1",
+    "@graphql-codegen/schema-ast": "^1.1.1",
+    "@graphql-codegen/typescript": "1.1.1",
+    "@graphql-codegen/typescript-graphql-files-modules": "^1.1.1",
+    "@graphql-codegen/typescript-operations": "^1.1.1",
+    "@types/graphql": "^14.2.0",
+    "@types/node": "^11.13.8",
+    "@types/node-fetch": "^2.3.3",
+    "graphql-tag": "^2.10.1",
+    "graphql-tag-register": "^0.1.1",
+    "graphql-types": "^1.1.0",
+    "markdownlint-cli": "^0.15.0",
+    "prettier": "^1.17.0",
+    "shx": "^0.3.2",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1"
+  },
+  "scripts": {
+    "build": "npm run graphql-codegen",
+    "clean": "shx rm -f *.js schema.json schema.ts typings/*.graphql.d.ts",
+    "compile": "tsc --pretty --project .",
+    "get-schema": "ts-node --require dotenv/config get-schema.ts",
+    "graphql-codegen": "graphql-codegen --config codegen.yml",
+    "lint": "tsc --noEmit --pretty --project . && prettier --check **/*.ts && tslint --format stylish --project . && markdownlint \"*.md\"",
+    "pretest": "npm run build && npm run lint",
+    "test": "npm run test:script",
+    "test:script": "npm run viewer-query",
+    "test:script:build": "npm run build && npm run test:script",
+    "viewer-query": "ts-node --require dotenv/config --files viewer-query.ts"
+  }
+}
