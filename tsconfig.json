@@ -3,10 +3,7 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "importHelpers": true,
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "lib": ["dom", "es2017"],
     "module": "commonjs",
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -15,9 +12,6 @@
     "resolveJsonModule": true,
     "strict": true,
     "target": "es2017",
-    "typeRoots": [
-      "node_modules/@types",
-      "typings"
-    ]
+    "typeRoots": ["node_modules/@types", "typings"]
   }
 }

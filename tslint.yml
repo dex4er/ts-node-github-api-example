@@ -1,6 +1,5 @@
 extends:
   - tslint:recommended
-  - tslint-config-standard
   - tslint-config-prettier
 linterOptions:
   exclude:
@@ -14,22 +13,10 @@ rules:
   member-access: [true, no-public] # public is implicit
   no-console: [true, log] # `console.log` is for temporary debugging only
   no-namespace: false # still better than literal class
-  no-shadowed-variable: [ # there is nothing wrong about shadowing function name
-    true,
-    {
-      function: false
-    }
-  ]
+  no-shadowed-variable: # there is nothing wrong about shadowing function name
+    - true
+    - function: false
   no-unused-variable: false # no-unused-variable is deprecated. Since TypeScript 2.9.
-  object-curly-spacing: [true, never] # aligning style with standard
   object-literal-sort-keys: false # too problematic
   one-variable-per-declaration: [true, ignore-for-loop] # common pattern for loops
-  ter-indent: [ # aligning style with standard
-    true,
-    2,
-    {
-      CallExpression: first,
-      MemberExpression: 1
-    }
-  ]
   typedef: [true, call-signature, parameter, property-declaration] # types are mandatory
