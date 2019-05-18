@@ -1,12 +1,14 @@
+#!/usr/bin/env ts-node
+
 import ApolloClient from 'apollo-boost'
-import {ViewerQuery, ViewerQueryVariables} from '../schema'
-
 import 'cross-fetch/polyfill'
-
 import graphqlRegister from 'graphql-tag-loader-register'
+
 graphqlRegister()
 
 import viewerQuery from '../operations/viewer.graphql'
+
+import {ViewerQuery, ViewerQueryVariables} from '../schema'
 
 const GITHUB_API_URL = 'https://api.github.com/graphql'
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
@@ -33,4 +35,4 @@ async function main(): Promise<void> {
   console.info(result.data.viewer)
 }
 
-main().catch(err => console.error(err))
+main().catch(console.error)
