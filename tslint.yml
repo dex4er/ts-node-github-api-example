@@ -20,3 +20,9 @@ rules:
   object-literal-sort-keys: false # too problematic
   one-variable-per-declaration: [true, ignore-for-loop] # common pattern for loops
   typedef: [true, call-signature, parameter, property-declaration] # types are mandatory
+  variable-name: # allow leading underscore
+    - true
+    - check-format
+    - allow-leading-underscore
+    - require-const-for-all-caps
+    - ban-keywords
