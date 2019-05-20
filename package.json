@@ -1,5 +1,5 @@
 {
-  "name": "ts-node-github-api-example",
+  "name": "@dex4er/ts-node-github-api-example",
   "version": "0.1.0",
   "description": "Example of Github API v4 client written in Typescript with Apollo library",
   "repository": {
@@ -50,7 +50,9 @@
     "compile": "tsc --pretty --project .",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
     "lint": "tsc --noEmit --pretty --project . && prettier --ignore-path .gitignore --list-different '**/*.json' '**/*.md' '**/*.ts' '**/*.yml' && tslint --format stylish --project . && markdownlint \"*.md\"",
-    "prepack": "npm run build && npm run pretest",
+    "postpublish": "git tag v$npm_package_version -a -m \"Release v$npm_package_version\" && git push --tags",
+    "prepack": "npm run pretest",
+    "prepublish": "npm run test:script",
     "pretest": "npm run build && npm run lint",
     "test": "npm run test:script",
     "test:script": "npm run github-apiv4-viewer-query",

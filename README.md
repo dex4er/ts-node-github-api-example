@@ -1,4 +1,4 @@
-# ts-node-github-api-example
+# @dex4er/ts-node-github-api-example
 
 <!-- markdownlint-disable MD013 -->
 
