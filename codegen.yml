@@ -2,15 +2,15 @@ overwrite: true
 schema: 'schema/index.json'
 documents: 'operations/*.graphql'
 generates:
-  schema/index.graphql:
-    plugins:
-      - schema-ast
   schema/index.ts:
     plugins:
       - typescript
       - typescript-operations
     config:
       constEnums: true
-  typings/viewer.graphql.d.ts:
+  operations/index.ts:
     plugins:
-      - typescript-graphql-files-modules
+      - graphql-codegen-typescript-document-nodes
+    config:
+      namingConvention: lowerCamelCase
+      nameSuffix: Query

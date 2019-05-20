@@ -25,22 +25,18 @@
     "cross-fetch": "^3.0.2",
     "dotenv": "^8.0.0",
     "graphql": "^14.3.0",
-    "graphql-tag-loader-register": "^1.0.4",
+    "graphql-tag": "^2.10.1",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.1.3",
-    "@graphql-codegen/introspection": "^1.1.3",
-    "@graphql-codegen/schema-ast": "^1.1.3",
     "@graphql-codegen/typescript": "1.1.3",
-    "@graphql-codegen/typescript-graphql-files-modules": "^1.1.3",
     "@graphql-codegen/typescript-operations": "^1.1.3",
     "@types/graphql": "^14.2.0",
     "@types/node": "^12.0.2",
     "@types/node-fetch": "^2.3.4",
-    "graphql-tag": "^2.10.1",
-    "graphql-tag-register": "^0.1.1",
+    "graphql-codegen-typescript-document-nodes": "^1.2.0",
     "graphql-types": "^1.1.0",
     "markdownlint-cli": "^0.16.0",
     "prettier": "^1.17.1",
@@ -49,16 +45,19 @@
     "tslint-config-prettier": "^1.18.0"
   },
   "scripts": {
-    "build": "npm run graphql-codegen",
-    "clean": "shx rm -f bin/*.js schema/*.graphql schema/*.js schema/*.json schema/*.ts typings/*.graphql.d.ts",
+    "build": "npm run graphql-codegen && npm run compile",
+    "clean": "shx rm -f bin/*.js operations/*.js operations/*.ts schema/*.js schema/*.json schema/*.ts",
     "compile": "tsc --pretty --project .",
-    "get-schema": "ts-node --require dotenv/config bin/get-schema.ts",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
     "lint": "tsc --noEmit --pretty --project . && prettier --ignore-path .gitignore --list-different '**/*.json' '**/*.md' '**/*.ts' '**/*.yml' && tslint --format stylish --project . && markdownlint \"*.md\"",
+    "prepack": "npm run github-apiv4-get-schema && npm run build && npm run pretest",
     "pretest": "npm run build && npm run lint",
     "test": "npm run test:script",
-    "test:script": "npm run viewer-query",
-    "test:script:build": "npm run build && npm run test:script",
-    "viewer-query": "ts-node --require dotenv/config --files bin/viewer-query.ts"
+    "test:script": "npm run github-apiv4-viewer-query",
+    "github-apiv4-get-schema": "ts-node --require dotenv/config bin/github-apiv4-get-schema",
+    "github-apiv4-viewer-query": "ts-node --require dotenv/config bin/github-apiv4-viewer-query"
+  },
+  "bin": {
+    "github-apiv4-viewer-query": "bin/github-apiv4-viewer-query.js"
   }
 }

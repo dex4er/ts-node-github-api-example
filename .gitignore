@@ -19,9 +19,7 @@ ts-node-*
 /out/
 
 /.nyc_output/
-
-/.tags
-/.tern-project
+/.yarnrc
 
 /package-lock.json
 /yarn.lock
@@ -29,4 +27,6 @@ ts-node-*
 
 /.graphqlconfig
 /.idea
+/.tags
+/.tern-project
 /.vscode

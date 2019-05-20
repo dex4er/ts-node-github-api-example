@@ -1,5 +1,7 @@
 #!/usr/bin/env ts-node
 
+/// <reference types="node" />
+
 import ApolloClient from 'apollo-client'
 
 import {InMemoryCache} from 'apollo-cache-inmemory'
@@ -9,11 +11,8 @@ import {HttpLink} from 'apollo-link-http'
 import {RetryLink} from 'apollo-link-retry'
 
 import 'cross-fetch/polyfill'
-import graphqlRegister from 'graphql-tag-loader-register'
 
-graphqlRegister()
-
-import viewerQuery from '../operations/viewer.graphql'
+import {viewerQuery} from '../operations'
 
 import {ViewerQuery, ViewerQueryVariables} from '../schema'
 
