@@ -2,11 +2,10 @@
 
 /.env
 
-/schema/index.graphql
-/schema/index.json
-/schema/index.ts
-
-/typings/*.graphql.d.ts
+/operations/*.ts
+/schema/*.graphql
+/schema/*.json
+/schema/*.ts
 
 *.gz
 *.tgz
