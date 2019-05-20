@@ -15,8 +15,8 @@ install:
 
 script:
   - npm run github-apiv4-get-schema
-  - if [ -n "$NPM_PACK" ]; then npm pack; else npm run build; fi
-  - npm run test:script
+  - if [ -n "$NPM_PACK" ]; then npm pack; else npm run compile; fi
+  - node bin/github-apiv4-viewer-query
   - npm run clean
   - git add .
   - git diff-index --stat HEAD
