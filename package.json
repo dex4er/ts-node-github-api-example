@@ -50,7 +50,7 @@
     "compile": "tsc --pretty --project .",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
     "lint": "tsc --noEmit --pretty --project . && prettier --ignore-path .gitignore --list-different '**/*.json' '**/*.md' '**/*.ts' '**/*.yml' && tslint --format stylish --project . && markdownlint \"*.md\"",
-    "prepack": "npm run github-apiv4-get-schema && npm run build && npm run pretest",
+    "prepack": "npm run build && npm run pretest",
     "pretest": "npm run build && npm run lint",
     "test": "npm run test:script",
     "test:script": "npm run github-apiv4-viewer-query",

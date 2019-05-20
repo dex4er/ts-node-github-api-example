@@ -14,7 +14,7 @@ install:
   - if [ "$NPM_AUDIT" = true ]; then npm audit; fi
 
 script:
-  - npm run get-schema
+  - npm run github-apiv4-get-schema
   - $NYC npm run ${NPM_RUN_SCRIPT:-build}
   - npm run test:script
   - npm run clean
