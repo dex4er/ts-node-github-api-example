@@ -19,4 +19,4 @@ script:
   - node bin/github-apiv4-viewer-query
   - npm run clean
   - git add .
-  - git diff-index --stat HEAD
+  - git diff-index --stat --exit-code HEAD
