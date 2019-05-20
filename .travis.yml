@@ -19,4 +19,4 @@ script:
   - npm run test:script
   - npm run clean
   - git add .
-  - git diff-index --quiet HEAD
+  - git diff-index --stat HEAD
