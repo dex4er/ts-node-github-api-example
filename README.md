@@ -32,7 +32,7 @@ edit .env
 ### schema
 
 ```shell
-npm run get-schema
+npm run github-apiv4-get-schema
 ```
 
 ### typings
@@ -41,10 +41,16 @@ npm run get-schema
 npm run graphql-codegen
 ```
 
+### compile
+
+```shell
+npm run compile
+```
+
 ### run
 
 ```shell
-npm run viewer-query
+npm run github-apiv4-viewer-query
 ```
 
 ## License
