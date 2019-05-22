@@ -2,14 +2,14 @@
 
 /// <reference types="node" />
 
-import fs from 'fs'
-import fetch from 'node-fetch'
+import fs from "fs"
+import fetch from "node-fetch"
 
-const GITHUB_API_URL = 'https://api.github.com/graphql'
+const GITHUB_API_URL = "https://api.github.com/graphql"
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
-const SCHEMA_JSON = 'schema/index.json'
+const SCHEMA_JSON = "schema/index.json"
 
-fetch(GITHUB_API_URL, {headers: {Authorization: 'bearer ' + GITHUB_TOKEN}})
+fetch(GITHUB_API_URL, {headers: {Authorization: "bearer " + GITHUB_TOKEN}})
   .then(res => {
     const schemaFile = fs.createWriteStream(SCHEMA_JSON)
     res.body.pipe(schemaFile)

@@ -1,6 +1,6 @@
 overwrite: true
-schema: 'schema/index.json'
-documents: 'operations/*.graphql'
+schema: "schema/index.json"
+documents: "operations/*.graphql"
 generates:
   schema/index.ts:
     plugins:

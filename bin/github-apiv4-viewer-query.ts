@@ -2,21 +2,21 @@
 
 /// <reference types="node" />
 
-import {ApolloClient} from 'apollo-client'
+import {ApolloClient} from "apollo-client"
 
-import {InMemoryCache} from 'apollo-cache-inmemory'
-import {ApolloLink} from 'apollo-link'
-import {setContext} from 'apollo-link-context'
-import {HttpLink} from 'apollo-link-http'
-import {RetryLink} from 'apollo-link-retry'
+import {InMemoryCache} from "apollo-cache-inmemory"
+import {ApolloLink} from "apollo-link"
+import {setContext} from "apollo-link-context"
+import {HttpLink} from "apollo-link-http"
+import {RetryLink} from "apollo-link-retry"
 
-import 'cross-fetch/polyfill'
+import "cross-fetch/polyfill"
 
-import {viewerQuery} from '../operations'
+import {viewerQuery} from "../operations"
 
-import {ViewerQuery, ViewerQueryVariables} from '../schema'
+import {ViewerQuery, ViewerQueryVariables} from "../schema"
 
-const GITHUB_API_URL = 'https://api.github.com/graphql'
+const GITHUB_API_URL = "https://api.github.com/graphql"
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 
 const client = new ApolloClient({
@@ -49,7 +49,7 @@ const client = new ApolloClient({
 
 async function main(): Promise<void> {
   const viewerQueryVariables: ViewerQueryVariables = {
-    pong: 'pong',
+    pong: "pong",
   }
   const result = await client.query<ViewerQuery, ViewerQueryVariables>({
     query: viewerQuery,
