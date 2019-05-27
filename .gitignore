@@ -1,4 +1,6 @@
 *.js
+*.lock
+*.log
 
 /.env
 
@@ -13,16 +15,17 @@
 ts-node-*
 
 /coverage/
+/out/
 /node_modules/
 
-/out/
-
+/.cache/
+/.install/
 /.nyc_output/
+/.packages/
+
 /.yarnrc
 
 /package-lock.json
-/yarn.lock
-/yarn-error.log
 
 /.graphqlconfig
 /.idea

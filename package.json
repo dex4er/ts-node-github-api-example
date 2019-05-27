@@ -46,11 +46,11 @@
   },
   "scripts": {
     "clean": "shx rm -f bin/*.js operations/*.js operations/*.ts schema/*.js schema/*.json schema/*.ts",
-    "compile": "npm run graphql-codegen && tsc --pretty --project .",
+    "compile": "npm run github-apiv4-get-schema && npm run graphql-codegen && tsc --pretty --project . && shx sed -i \"s/env ts-node/env node/\" bin/*.js",
     "github-apiv4-get-schema": "ts-node --require dotenv/config bin/github-apiv4-get-schema",
     "github-apiv4-viewer-query": "ts-node --require dotenv/config bin/github-apiv4-viewer-query",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
-    "lint": "tsc --noEmit --pretty --project . && prettier --ignore-path .gitignore --list-different '**/*.json' '**/*.md' '**/*.ts' '**/*.yml' && tslint --format stylish --project . && markdownlint \"*.md\"",
+    "lint": "tsc --noEmit --pretty --project . && prettier --ignore-path .gitignore --list-different \"**/*.json\" \"**/*.md\" \"**/*.ts\" \"**/*.yml\" && tslint --format stylish --project . && markdownlint \"*.md\"",
     "postpublish": "git tag v$npm_package_version -a -m \"Release v$npm_package_version\" && git push --tags",
     "prepack": "npm run pretest",
     "prepublishOnly": "npm run test:script",

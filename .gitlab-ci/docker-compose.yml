@@ -1,0 +1,21 @@
+# Run Gitlab CI scripts directly in Docker
+
+# Usage: docker-compose up --abort-on-container-exit --exit-code-from test --force-recreate
+
+version: "3"
+
+services:
+  test:
+    image: ubuntu:bionic
+    env_file:
+      - ../.env
+    environment:
+      NODE_VERSION: 10
+    volumes:
+      - ..:/build
+    tmpfs:
+      - /build/.cache
+      - /build/.install:exec
+      - /build/.packages
+      - /build/node_modules:exec
+    command: /bin/bash /build/.gitlab-ci/helpers/test-in-docker-compose.sh

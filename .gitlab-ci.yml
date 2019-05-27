@@ -1,0 +1,150 @@
+image: ubuntu:bionic
+
+cache:
+  paths:
+    - .cache/
+
+stages:
+  - test:app
+  - make:packages:develop
+  - test:packages:develop
+  - export:packages:develop
+  - merge:packages:master
+  - tag:packages:master
+  - tag:app:master
+
+variables:
+  GIT_REPO_APP_URL: git@gitlab.com:dex4er/ts-node-github-api-example.git
+  GIT_REPO_PACKAGES_URL: git@gitlab.com:dex4er/ts-node-github-api-example-packages.git
+  NODE_VERSION: 10
+
+test:app:node-10:
+  stage: test:app
+  before_script:
+    - . .gitlab-ci/before/environ.sh
+    - . .gitlab-ci/before/apt.sh
+    - . .gitlab-ci/before/gpg.sh
+    - . .gitlab-ci/before/node.sh
+    - . .gitlab-ci/before/yarn.sh
+  script:
+    - . .gitlab-ci/test-app.sh
+  except:
+    - tags
+
+test:app:node-12:
+  stage: test:app
+  before_script:
+    - . .gitlab-ci/before/environ.sh
+    - . .gitlab-ci/before/apt.sh
+    - . .gitlab-ci/before/gpg.sh
+    - . .gitlab-ci/before/node.sh
+    - . .gitlab-ci/before/yarn.sh
+  script:
+    - . .gitlab-ci/test-app.sh
+  except:
+    - tags
+  variables:
+    NODE_VERSION: 12
+
+make:packages:develop:
+  stage: make:packages:develop
+  before_script:
+    - . .gitlab-ci/before/environ.sh
+    - . .gitlab-ci/before/apt.sh
+    - . .gitlab-ci/before/gpg.sh
+    - . .gitlab-ci/before/node.sh
+    - . .gitlab-ci/before/yarn.sh
+  script:
+    - . .gitlab-ci/make-packages.sh
+  only:
+    - develop
+  artifacts:
+    paths:
+      - .packages/
+    expire_in: 1 week
+
+test:packages:develop:node-10:
+  stage: test:packages:develop
+  before_script:
+    - . .gitlab-ci/before/environ.sh
+    - . .gitlab-ci/before/apt.sh
+    - . .gitlab-ci/before/gpg.sh
+    - . .gitlab-ci/before/node.sh
+    - . .gitlab-ci/before/yarn.sh
+  script:
+    - . .gitlab-ci/test-packages.sh
+  only:
+    - develop
+
+test:packages:develop:node-12:
+  stage: test:packages:develop
+  before_script:
+    - . .gitlab-ci/before/environ.sh
+    - . .gitlab-ci/before/apt.sh
+    - . .gitlab-ci/before/gpg.sh
+    - . .gitlab-ci/before/node.sh
+    - . .gitlab-ci/before/yarn.sh
+  script:
+    - . .gitlab-ci/test-packages.sh
+  only:
+    - develop
+  variables:
+    NODE_VERSION: 12
+
+export:packages:develop:
+  stage: export:packages:develop
+  before_script:
+    - . .gitlab-ci/before/environ.sh
+    - . .gitlab-ci/before/apt.sh
+    - . .gitlab-ci/before/git.sh
+    - . .gitlab-ci/before/ssh-private-key.sh
+  script:
+    - . .gitlab-ci/export.sh
+  only:
+    - develop
+  variables:
+    ARTIFACTS_PATH: .packages/
+    GIT_REPO_URL: $GIT_REPO_PACKAGES_URL
+
+merge:packages:master:
+  stage: merge:packages:master
+  before_script:
+    - . .gitlab-ci/before/environ.sh
+    - . .gitlab-ci/before/apt.sh
+    - . .gitlab-ci/before/git.sh
+    - . .gitlab-ci/before/ssh-private-key.sh
+  script:
+    - . .gitlab-ci/merge.sh
+  only:
+    - master
+  variables:
+    GIT_MERGE_FROM: develop
+    GIT_REPO_URL: $GIT_REPO_PACKAGES_URL
+
+tag:packages:master:
+  stage: tag:packages:master
+  before_script:
+    - . .gitlab-ci/before/environ.sh
+    - . .gitlab-ci/before/apt.sh
+    - . .gitlab-ci/before/git.sh
+    - . .gitlab-ci/before/ssh-private-key.sh
+  script:
+    - . .gitlab-ci/tag.sh
+  only:
+    - master
+  variables:
+    GIT_REPO_URL: $GIT_REPO_PACKAGES_URL
+
+tag:app:master:
+  stage: tag:app:master
+  before_script:
+    - . .gitlab-ci/before/environ.sh
+    - . .gitlab-ci/before/apt.sh
+    - . .gitlab-ci/before/git.sh
+    - . .gitlab-ci/before/ssh-private-key.sh
+  script:
+    - . .gitlab-ci/tag.sh
+  only:
+    - master
+  variables:
+    GIT_REPO_URL: $GIT_REPO_APP_URL
