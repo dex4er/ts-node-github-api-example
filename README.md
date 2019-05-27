@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD013 -->
 
-[![Build Status](https://secure.travis-ci.org/dex4er/ts-node-github-api-example.svg)](http://travis-ci.org/dex4er/ts-node-github-api-example)
+[![Travis CI](https://secure.travis-ci.org/dex4er/ts-node-github-api-example.svg)](http://travis-ci.org/dex4er/ts-node-github-api-example) [![GitLab Pipelines](https://gitlab.com/dex4er/ts-node-github-api-example/badges/develop/build.svg)](https://gitlab.com/dex4er/ts-node-github-api-example/pipelines)
 
 <!-- markdownlint-enable MD013 -->
 
