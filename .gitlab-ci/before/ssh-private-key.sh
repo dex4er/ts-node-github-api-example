@@ -4,6 +4,8 @@ set -x
 
 apt-get install openssh-client
 
+ssh -V
+
 mkdir -p ~/.ssh
 printf "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 set +x

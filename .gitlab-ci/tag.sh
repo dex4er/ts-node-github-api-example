@@ -1,8 +1,4 @@
-test -n "$VERSION_FROM" || exit 1
-test -f "$VERSION_FROM" || exit 1
-
-version_line=$(perl -nale 'print if /^VERSION\s*=\s*\(.*\)$/' "$VERSION_FROM")
-version=$(perl -le "@$version_line; print join '.', @VERSION")
+version=$(jq -r .version package.json)
 
 test -n "$version" || exit 1
 

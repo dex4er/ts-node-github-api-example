@@ -7,3 +7,5 @@ git-tag-version false
 yarn-offline-mirror "./.packages"
 yarn-offline-mirror-pruning true
 END
+
+yarn --version
