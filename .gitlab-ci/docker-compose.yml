@@ -10,7 +10,8 @@ services:
     env_file:
       - ../.env
     environment:
-      NODE_VERSION: 10
+      NODE_VERSION: "10"
+      TEST_AUDIT: "yes"
     volumes:
       - ..:/build
     tmpfs:

@@ -14,9 +14,9 @@ stages:
   - tag:app:master
 
 variables:
-  GIT_REPO_APP_URL: git@gitlab.com:dex4er/ts-node-github-api-example.git
-  GIT_REPO_PACKAGES_URL: git@gitlab.com:dex4er/ts-node-github-api-example-packages.git
-  NODE_VERSION: 10
+  GIT_REPO_APP_URL: "git@gitlab.com:dex4er/ts-node-github-api-example.git"
+  GIT_REPO_PACKAGES_URL: "git@gitlab.com:dex4er/ts-node-github-api-example-packages.git"
+  NODE_VERSION: "10"
 
 test:app:node-10:
   stage: test:app
@@ -30,6 +30,8 @@ test:app:node-10:
     - . .gitlab-ci/test-app.sh
   except:
     - tags
+  variables:
+    TEST_AUDIT: "yes"
 
 test:app:node-12:
   stage: test:app
@@ -44,7 +46,7 @@ test:app:node-12:
   except:
     - tags
   variables:
-    NODE_VERSION: 12
+    NODE_VERSION: "12"
 
 make:packages:develop:
   stage: make:packages:develop
@@ -89,7 +91,7 @@ test:packages:develop:node-12:
   only:
     - develop
   variables:
-    NODE_VERSION: 12
+    NODE_VERSION: "12"
 
 export:packages:develop:
   stage: export:packages:develop
@@ -103,8 +105,8 @@ export:packages:develop:
   only:
     - develop
   variables:
-    ARTIFACTS_PATH: .packages/
-    GIT_REPO_URL: $GIT_REPO_PACKAGES_URL
+    ARTIFACTS_PATH: ".packages/"
+    GIT_REPO_URL: "$GIT_REPO_PACKAGES_URL"
 
 merge:packages:master:
   stage: merge:packages:master
@@ -118,8 +120,8 @@ merge:packages:master:
   only:
     - master
   variables:
-    GIT_MERGE_FROM: develop
-    GIT_REPO_URL: $GIT_REPO_PACKAGES_URL
+    GIT_MERGE_FROM: "develop"
+    GIT_REPO_URL: "$GIT_REPO_PACKAGES_URL"
 
 tag:packages:master:
   stage: tag:packages:master
@@ -134,7 +136,7 @@ tag:packages:master:
   only:
     - master
   variables:
-    GIT_REPO_URL: $GIT_REPO_PACKAGES_URL
+    GIT_REPO_URL: "$GIT_REPO_PACKAGES_URL"
 
 tag:app:master:
   stage: tag:app:master
@@ -149,4 +151,4 @@ tag:app:master:
   only:
     - master
   variables:
-    GIT_REPO_URL: $GIT_REPO_APP_URL
+    GIT_REPO_URL: "$GIT_REPO_APP_URL"
