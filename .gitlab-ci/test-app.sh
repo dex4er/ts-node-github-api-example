@@ -5,6 +5,9 @@ yarn install --non-interactive
 
 npm test
 
-if [ "$TEST_AUDIT" == "yes" ]; then
-    . .gitlab-ci/helpers/yarn-audit.sh
-fi
+. .gitlab-ci/helpers/test-audit.sh
+
+npm run clean
+
+git add .
+git diff-index --quiet HEAD
