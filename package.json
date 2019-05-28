@@ -44,6 +44,9 @@
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0"
   },
+  "bin": {
+    "github-apiv4-viewer-query": "bin/github-apiv4-viewer-query.js"
+  },
   "scripts": {
     "clean": "shx rm -f bin/*.js operations/*.js operations/*.ts schema/*.js schema/*.json schema/*.ts",
     "compile": "npm run github-apiv4-get-schema && npm run graphql-codegen && tsc --pretty --project . && shx sed -i \"s/env ts-node/env node/\" bin/*.js",
@@ -57,8 +60,5 @@
     "pretest": "npm run compile && npm run lint",
     "test": "npm run test:script",
     "test:script": "npm run github-apiv4-viewer-query"
-  },
-  "bin": {
-    "github-apiv4-viewer-query": "bin/github-apiv4-viewer-query.js"
   }
 }
