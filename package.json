@@ -25,9 +25,7 @@
     "cross-fetch": "^3.0.3",
     "dotenv": "^8.0.0",
     "graphql": "^14.3.1",
-    "graphql-tag": "^2.10.1",
-    "ts-node": "^8.2.0",
-    "typescript": "^3.4.5"
+    "graphql-tag": "^2.10.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.2.0",
@@ -41,23 +39,26 @@
     "markdownlint-cli": "^0.16.0",
     "prettier": "^1.17.1",
     "shx": "^0.3.2",
+    "ts-node": "^8.2.0",
     "tslint": "^5.16.0",
-    "tslint-config-prettier": "^1.18.0"
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.5"
   },
   "bin": {
     "github-apiv4-viewer-query": "bin/github-apiv4-viewer-query.js"
   },
   "scripts": {
     "clean": "shx rm -f bin/*.js operations/*.js operations/*.ts schema/*.js schema/*.json schema/*.ts",
-    "compile": "npm run github-apiv4-get-schema && npm run graphql-codegen && tsc --pretty --project . && shx sed -i \"s/env ts-node/env node/\" bin/*.js",
-    "github-apiv4-get-schema": "ts-node --require dotenv/config bin/github-apiv4-get-schema",
-    "github-apiv4-viewer-query": "ts-node --require dotenv/config bin/github-apiv4-viewer-query",
+    "codegen": "npm run github-apiv4-get-schema && npm run graphql-codegen",
+    "compile": "npm run codegen && tsc --pretty --project . && shx sed -i \"s/env ts-node/env node/\" bin/*.js",
+    "github-apiv4-get-schema": "ts-node --require dotenv/config bin/github-apiv4-get-schema.ts",
+    "github-apiv4-viewer-query": "ts-node --require dotenv/config bin/github-apiv4-viewer-query.ts",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
     "lint": "tsc --noEmit --pretty --project . && prettier --ignore-path .gitignore --list-different \"**/*.json\" \"**/*.md\" \"**/*.ts\" \"**/*.yml\" && tslint --format stylish --project . && markdownlint \"*.md\"",
     "postpublish": "git tag v$npm_package_version -a -m \"Release v$npm_package_version\" && git push --tags",
-    "prepack": "npm run pretest",
+    "prepack": "npm run compile && npm run pretest",
     "prepublishOnly": "npm run test:script",
-    "pretest": "npm run compile && npm run lint",
+    "pretest": "npm run codegen && npm run lint",
     "test": "npm run test:script",
     "test:script": "npm run github-apiv4-viewer-query"
   }
