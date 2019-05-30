@@ -6,12 +6,12 @@ cache:
 
 stages:
   - test:app
-  - make:packages:develop
-  - test:packages:develop
-  - export:packages:develop
-  - merge:packages:master
-  - tag:packages:master
-  - tag:app:master
+  - make:packages
+  - test:packages
+  - export:packages
+  - merge:packages
+  - tag:packages
+  - tag:app
 
 variables:
   GIT_REPO_APP_URL: "git@gitlab.com:dex4er/ts-node-github-api-example.git"
@@ -48,8 +48,8 @@ test:app:node-12:
   variables:
     NODE_VERSION: "12"
 
-make:packages:develop:
-  stage: make:packages:develop
+make:packages:
+  stage: make:packages
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -65,8 +65,8 @@ make:packages:develop:
       - .packages/
     expire_in: 1 week
 
-test:packages:develop:node-10:
-  stage: test:packages:develop
+test:packages:node-10:
+  stage: test:packages
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -78,8 +78,8 @@ test:packages:develop:node-10:
   only:
     - develop
 
-test:packages:develop:node-12:
-  stage: test:packages:develop
+test:packages:node-12:
+  stage: test:packages
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -93,8 +93,8 @@ test:packages:develop:node-12:
   variables:
     NODE_VERSION: "12"
 
-export:packages:develop:
-  stage: export:packages:develop
+export:packages:
+  stage: export:packages
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -108,8 +108,8 @@ export:packages:develop:
     ARTIFACTS_PATH: ".packages/"
     GIT_REPO_URL: "$GIT_REPO_PACKAGES_URL"
 
-merge:packages:master:
-  stage: merge:packages:master
+merge:packages:
+  stage: merge:packages
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -123,8 +123,8 @@ merge:packages:master:
     GIT_MERGE_FROM: "develop"
     GIT_REPO_URL: "$GIT_REPO_PACKAGES_URL"
 
-tag:packages:master:
-  stage: tag:packages:master
+tag:packages:
+  stage: tag:packages
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -138,8 +138,8 @@ tag:packages:master:
   variables:
     GIT_REPO_URL: "$GIT_REPO_PACKAGES_URL"
 
-tag:app:master:
-  stage: tag:app:master
+tag:app:
+  stage: tag:app
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh

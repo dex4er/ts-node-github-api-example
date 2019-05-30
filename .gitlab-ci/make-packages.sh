@@ -13,7 +13,7 @@ yarn install --non-interactive
 npm pack --unsafe-perm .
 
 cp -f yarn.lock .packages/yarn-dev.lock
-cp -f $package-$version.tgz .packages
+cp -f $package-$version.tgz .packages/
 
 mkdir -p .install
 rm -rf .install/* .install/.??*
@@ -29,4 +29,8 @@ yarn add .packages/$package-$version.tgz
 
 popd
 
-cp -f .install/yarn.lock .packages
+cp -f .install/yarn.lock .packages/
+
+npm run clean
+
+. .gitlab-ci/helpers/git-diff.sh

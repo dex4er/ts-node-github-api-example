@@ -9,5 +9,4 @@ npm test
 
 npm run clean
 
-git add .
-git diff-index --quiet HEAD
+. .gitlab-ci/helpers/git-diff.sh
