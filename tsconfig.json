@@ -10,7 +10,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "ts-node-github-api-example/*": ["*"]
+      "@dex4er/ts-node-github-api-example/*": ["*"]
     },
     "resolveJsonModule": true,
     "strict": true,

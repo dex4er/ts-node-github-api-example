@@ -12,9 +12,12 @@ import {RetryLink} from "apollo-link-retry"
 
 import "cross-fetch/polyfill"
 
-import {viewerQuery} from "ts-node-github-api-example/operations"
+import {viewerQuery} from "@dex4er/ts-node-github-api-example/operations"
 
-import {ViewerQuery, ViewerQueryVariables} from "ts-node-github-api-example/schema"
+import {
+  ViewerQuery,
+  ViewerQueryVariables,
+} from "@dex4er/ts-node-github-api-example/schema"
 
 const GITHUB_API_URL = "https://api.github.com/graphql"
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
