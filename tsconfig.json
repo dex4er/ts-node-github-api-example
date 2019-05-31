@@ -9,6 +9,9 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "paths": {
+      "ts-node-github-api-example/*": ["*"]
+    },
     "resolveJsonModule": true,
     "strict": true,
     "target": "es2017",
