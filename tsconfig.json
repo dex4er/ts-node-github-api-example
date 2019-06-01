@@ -6,6 +6,7 @@
     "importHelpers": true,
     "lib": ["dom", "es2017"],
     "module": "commonjs",
+    "moduleResolution": "node",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
