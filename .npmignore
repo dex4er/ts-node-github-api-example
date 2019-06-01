@@ -1,6 +1,10 @@
 *
 
 !**/*.js
+!**/*.map
+!**/*.d.ts
+
+/bin/*.d.ts
 
 ts-node-*
 

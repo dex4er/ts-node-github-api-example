@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "declaration": true,
     "esModuleInterop": true,
     "importHelpers": true,
     "lib": ["dom", "es2017"],
@@ -13,6 +14,7 @@
       "@dex4er/ts-node-github-api-example/*": ["*"]
     },
     "resolveJsonModule": true,
+    "sourceMap": true,
     "strict": true,
     "target": "es2017",
     "typeRoots": ["node_modules/@types"]
