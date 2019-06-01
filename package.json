@@ -1,6 +1,6 @@
 {
   "name": "@dex4er/ts-node-github-api-example",
-  "version": "0.1.0",
+  "version": "0.20190601.0",
   "description": "Example of Github API v4 client written in Typescript with Apollo library",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
     "@graphql-codegen/typescript": "1.2.0",
     "@graphql-codegen/typescript-operations": "^1.2.0",
     "@types/graphql": "^14.2.0",
-    "@types/node": "^12.0.2",
+    "@types/node": "^12.0.4",
     "@types/node-fetch": "^2.3.4",
     "graphql-codegen-typescript-document-nodes": "^1.2.0",
     "graphql-types": "^1.1.0",
@@ -41,9 +41,9 @@
     "shx": "^0.3.2",
     "ts-node": "^8.2.0",
     "tsconfig-paths": "^3.8.0",
-    "tslint": "^5.16.0",
+    "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.5.1"
   },
   "bin": {
     "github-apiv4-viewer-query": "bin/github-apiv4-viewer-query.js"
