@@ -50,7 +50,10 @@
   },
   "scripts": {
     "clean:codegen": "shx rm -f operations/*.ts schema/*.json schema/*.ts",
-    "clean:compile": "shx rm -f bin/*.js operations/*.js operations/*.map schema/*.js schema/*.map",
+    "clean:compile:d.ts": "shx rm -f bin/*.d.ts operations/*.d.ts schema/*.d.ts",
+    "clean:compile:map": "shx rm -f bin/*.map operations/*.map schema/*.map",
+    "clean:compile:js": "shx rm -f bin/*.js operations/*.js schema/*.js",
+    "clean:compile": "npm run clean:compile:d.ts && npm run clean:compile:map && npm run clean:compile:map",
     "clean": "npm run clean:compile && npm run clean:codegen",
     "codegen": "npm run github-apiv4-get-schema && npm run graphql-codegen",
     "compile": "npm run codegen && tsc --pretty --project . && shx sed -i \"s/env ts-node/env node/\" bin/*.js",
