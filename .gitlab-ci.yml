@@ -58,8 +58,6 @@ make:packages:
     - . .gitlab-ci/before/yarn.sh
   script:
     - . .gitlab-ci/make-packages.sh
-  only:
-    - develop
   artifacts:
     paths:
       - .packages/
@@ -75,8 +73,6 @@ test:packages:node-10:
     - . .gitlab-ci/before/yarn.sh
   script:
     - . .gitlab-ci/test-packages.sh
-  only:
-    - develop
 
 test:packages:node-12:
   stage: test:packages
@@ -88,8 +84,6 @@ test:packages:node-12:
     - . .gitlab-ci/before/yarn.sh
   script:
     - . .gitlab-ci/test-packages.sh
-  only:
-    - develop
   variables:
     NODE_VERSION: "12"
 
