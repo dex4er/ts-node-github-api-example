@@ -3,8 +3,9 @@ rm -rf node_modules/*
 
 yarn install --non-interactive
 
-npm run prepack
-npm run prepublishOnly
+npm run compile
+npm run lint
+npm run test:script
 
 . .gitlab-ci/helpers/test-audit.sh
 
