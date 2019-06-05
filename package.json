@@ -62,7 +62,7 @@
     "graphql-codegen": "graphql-codegen --config codegen.yml",
     "lint": "tsc --noEmit --pretty --project . && prettier --ignore-path .gitignore --list-different \"**/*.{json,md,ts,yml}\" \"!**/*.d.ts\" && tslint --format stylish --project . && markdownlint \"*.md\"",
     "postpublish": "git tag v$npm_package_version -a -m \"Release v$npm_package_version\" && git push --tags",
-    "prepack": "npm run compile && npm run lint",
+    "prepack": "npm run compile",
     "prepublishOnly": "npm run test:script",
     "pretest": "npm run codegen && npm run lint",
     "test": "npm run test:script",

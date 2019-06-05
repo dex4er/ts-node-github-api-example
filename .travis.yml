@@ -10,6 +10,7 @@ matrix:
     - node_js: "8"
 
 install:
+  - set -e
   - npm install
   - if [ -n "$NPM_AUDIT" ]; then npm audit; fi
 
@@ -17,6 +18,6 @@ script:
   - npm run github-apiv4-get-schema
   - if [ -n "$NPM_PACK" ]; then npm pack; else npm run compile; fi
   - npm run github-apiv4-viewer-query
+  - git diff --stat --exit-code
+  - for f in $(git ls-files --others --exclude-standard); do git diff --no-index --stat --exit-code /dev/null $next; done
   - npm run clean
-  - git add .
-  - git diff-index --stat --exit-code HEAD
