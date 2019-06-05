@@ -3,7 +3,7 @@ rm -rf node_modules/*
 
 yarn install --non-interactive
 
-npm run compile
+npm pack --unsafe-perm .
 npm run lint
 npm run test:script
 
