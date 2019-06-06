@@ -20,6 +20,8 @@ variables:
 
 test:app:node-10:
   stage: test:app
+  only:
+    - branches
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -28,13 +30,13 @@ test:app:node-10:
     - . .gitlab-ci/before/yarn.sh
   script:
     - . .gitlab-ci/test-app.sh
-  except:
-    - tags
   variables:
     TEST_AUDIT: "yes"
 
 test:app:node-12:
   stage: test:app
+  only:
+    - branches
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -43,13 +45,13 @@ test:app:node-12:
     - . .gitlab-ci/before/yarn.sh
   script:
     - . .gitlab-ci/test-app.sh
-  except:
-    - tags
   variables:
     NODE_VERSION: "12"
 
 make:packages:
   stage: make:packages
+  only:
+    - branches
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -65,6 +67,8 @@ make:packages:
 
 test:packages:node-10:
   stage: test:packages
+  only:
+    - branches
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -76,6 +80,8 @@ test:packages:node-10:
 
 test:packages:node-12:
   stage: test:packages
+  only:
+    - branches
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -89,6 +95,8 @@ test:packages:node-12:
 
 export:packages:
   stage: export:packages
+  only:
+    - develop
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -96,14 +104,14 @@ export:packages:
     - . .gitlab-ci/before/ssh-private-key.sh
   script:
     - . .gitlab-ci/export.sh
-  only:
-    - develop
   variables:
     ARTIFACTS_PATH: ".packages/"
     GIT_REPO_URL: "$GIT_REPO_PACKAGES_URL"
 
 merge:packages:
   stage: merge:packages
+  only:
+    - master
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -111,14 +119,14 @@ merge:packages:
     - . .gitlab-ci/before/ssh-private-key.sh
   script:
     - . .gitlab-ci/merge.sh
-  only:
-    - master
   variables:
     GIT_MERGE_FROM: "develop"
     GIT_REPO_URL: "$GIT_REPO_PACKAGES_URL"
 
 tag:packages:
   stage: tag:packages
+  only:
+    - master
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -127,13 +135,13 @@ tag:packages:
     - . .gitlab-ci/before/ssh-private-key.sh
   script:
     - . .gitlab-ci/tag.sh
-  only:
-    - master
   variables:
     GIT_REPO_URL: "$GIT_REPO_PACKAGES_URL"
 
 tag:app:
   stage: tag:app
+  only:
+    - master
   before_script:
     - . .gitlab-ci/before/environ.sh
     - . .gitlab-ci/before/apt.sh
@@ -142,7 +150,5 @@ tag:app:
     - . .gitlab-ci/before/ssh-private-key.sh
   script:
     - . .gitlab-ci/tag.sh
-  only:
-    - master
   variables:
     GIT_REPO_URL: "$GIT_REPO_APP_URL"
