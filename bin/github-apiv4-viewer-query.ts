@@ -22,7 +22,7 @@ import {
   ViewerQueryVariables,
 } from "@dex4er/ts-node-github-api-example/schema"
 
-const GITHUB_API_URL = "http://api.github.com/graphql"
+const GITHUB_API_URL = "https://api.github.com/graphql"
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 
 const USER_AGENT = path.basename(__filename).replace(/\.(js|ts)$/i, "") + "/" + VERSION
