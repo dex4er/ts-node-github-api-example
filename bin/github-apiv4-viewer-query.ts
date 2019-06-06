@@ -12,6 +12,9 @@ import {RetryLink} from "apollo-link-retry"
 
 import "cross-fetch/polyfill"
 
+import path from "path"
+
+import {VERSION} from "@dex4er/ts-node-github-api-example/lib/version"
 import {viewerQuery} from "@dex4er/ts-node-github-api-example/operations"
 
 import {
@@ -19,8 +22,10 @@ import {
   ViewerQueryVariables,
 } from "@dex4er/ts-node-github-api-example/schema"
 
-const GITHUB_API_URL = "https://api.github.com/graphql"
+const GITHUB_API_URL = "http://api.github.com/graphql"
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
+
+const USER_AGENT = path.basename(__filename).replace(/\.(js|ts)$/i, "") + "/" + VERSION
 
 const client = new ApolloClient({
   link: ApolloLink.from([
@@ -39,7 +44,8 @@ const client = new ApolloClient({
       return {
         headers: {
           ...headers,
-          authorization: `Bearer ${GITHUB_TOKEN}`,
+          "Authorization": `Bearer ${GITHUB_TOKEN}`,
+          "User-Agent": USER_AGENT,
         },
       }
     }),

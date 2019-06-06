@@ -51,9 +51,9 @@
   "scripts": {
     "clean:codegen": "shx rm -f operations/*.ts schema/*.json schema/*.ts",
     "clean:compile": "npm run clean:compile:d.ts && npm run clean:compile:js && npm run clean:compile:js.map",
-    "clean:compile:d.ts": "shx rm -f bin/*.d.ts operations/*.d.ts schema/*.d.ts",
-    "clean:compile:js": "shx rm -f bin/*.js operations/*.js schema/*.js",
-    "clean:compile:js.map": "shx rm -f bin/*.js.map operations/*.js.map schema/*.js.map",
+    "clean:compile:d.ts": "shx rm -f bin/*.d.ts lib/*.d.ts operations/*.d.ts schema/*.d.ts",
+    "clean:compile:js": "shx rm -f bin/*.js lib/*.js operations/*.js schema/*.js",
+    "clean:compile:js.map": "shx rm -f bin/*.js.map lib/*.js.map operations/*.js.map schema/*.js.map",
     "clean": "npm run clean:compile && npm run clean:codegen",
     "codegen": "npm run github-apiv4-get-schema && npm run graphql-codegen",
     "compile": "npm run codegen && tsc --pretty --project . && tsc --pretty --project bin && shx sed -i \"s/env ts-node/env node/\" bin/*.js",
@@ -66,6 +66,7 @@
     "prepublishOnly": "npm run test:script",
     "pretest": "npm run codegen && npm run lint",
     "test": "npm run test:script",
-    "test:script": "npm run github-apiv4-viewer-query"
+    "test:script": "npm run github-apiv4-viewer-query",
+    "version": "shx echo \"export const VERSION = \\\"$npm_package_version\\\"\" > lib/version.ts"
   }
 }
