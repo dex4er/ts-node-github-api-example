@@ -3,12 +3,12 @@ rm -rf node_modules/*
 
 yarn install --non-interactive
 
-npm pack --unsafe-perm .
-npm run lint
-npm run test:script
+npm pack
+yarn lint
+yarn test:script
 
 . .gitlab-ci/helpers/test-audit.sh
 
-npm run clean
+yarn clean
 
 . .gitlab-ci/helpers/git-diff.sh

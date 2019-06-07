@@ -32,25 +32,25 @@ edit .env
 ### schema
 
 ```shell
-npm run github-apiv4-get-schema
+yarn github-apiv4-get-schema
 ```
 
 ### typings
 
 ```shell
-npm run graphql-codegen
+yarn graphql-codegen
 ```
 
 ### compile
 
 ```shell
-npm run compile
+yarn compile
 ```
 
 ### run
 
 ```shell
-npm run github-apiv4-viewer-query
+yarn github-apiv4-viewer-query
 ```
 
 ## License

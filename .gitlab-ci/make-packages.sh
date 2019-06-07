@@ -10,7 +10,7 @@ rm -f yarn.lock
 yarn cache clean
 yarn install --non-interactive
 
-npm pack --unsafe-perm .
+npm pack
 
 cp -f yarn.lock .packages/yarn-dev.lock
 cp -f $package-$version.tgz .packages/
@@ -31,6 +31,6 @@ popd
 
 cp -f .install/yarn.lock .packages/
 
-npm run clean
+yarn clean
 
 . .gitlab-ci/helpers/git-diff.sh
