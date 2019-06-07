@@ -1,6 +1,6 @@
 {
   "name": "@dex4er/ts-node-github-api-example",
-  "version": "0.20190604.1",
+  "version": "0.20190607.0",
   "description": "Example of Github API v4 client written in Typescript with Apollo library",
   "repository": {
     "type": "git",
