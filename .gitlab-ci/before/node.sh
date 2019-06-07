@@ -7,4 +7,6 @@ nvm --version
 nvm install $NODE_VERSION
 set -x
 
+npm config set unsafe-perm true
+
 node --version
