@@ -59,7 +59,7 @@
     "clean": "yarn clean:compile && yarn clean:codegen",
     "codegen": "yarn graphql-codegen",
     "compile": "yarn codegen && tsc --pretty --project . && tsc --pretty --project bin && shx sed -i \"s/env ts-node/env node/\" bin/*.js > sed.tmp && shx rm -f sed.tmp",
-    "github-apiv4-get-schema": "ts-node --require dotenv/config bin/github-apiv4-get-schema.ts",
+    "github-apiv4-get-schema": "ts-node --require dotenv/config scripts/github-apiv4-get-schema.ts",
     "github-apiv4-viewer-query": "ts-node --require dotenv/config --require tsconfig-paths/register bin/github-apiv4-viewer-query.ts",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
     "lint": "tsc --noEmit --pretty --project . && tsc --noEmit --pretty --project bin && prettier --ignore-path .gitignore --list-different \"**/*.{json,md,ts,yml}\" \"!**/*.d.ts\" && tslint --format stylish --project . && tslint --format stylish --project bin && markdownlint \"*.md\"",
