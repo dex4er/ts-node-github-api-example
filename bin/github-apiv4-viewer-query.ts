@@ -2,6 +2,8 @@
 
 /// <reference types="node" />
 
+import "cross-fetch/polyfill"
+
 import {ApolloClient} from "apollo-client"
 
 import {InMemoryCache} from "apollo-cache-inmemory"
@@ -9,8 +11,6 @@ import {ApolloLink} from "apollo-link"
 import {setContext} from "apollo-link-context"
 import {HttpLink} from "apollo-link-http"
 import {RetryLink} from "apollo-link-retry"
-
-import "cross-fetch/polyfill"
 
 import path from "path"
 
@@ -22,7 +22,7 @@ import {
   ViewerQueryVariables,
 } from "@dex4er/ts-node-github-api-example/schema"
 
-const GITHUB_API_URL = "https://api.github.com/graphql"
+const GITHUB_API_URL = process.env.GITHUB_API_URL || "https://api.github.com/graphql"
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 
 const USER_AGENT = path.basename(__filename).replace(/\.(js|ts)$/i, "") + "/" + VERSION
@@ -44,7 +44,7 @@ const client = new ApolloClient({
       return {
         headers: {
           ...headers,
-          "Authorization": `Bearer ${GITHUB_TOKEN}`,
+          "Authorization": GITHUB_TOKEN ? `Bearer ${GITHUB_TOKEN}` : undefined,
           "User-Agent": USER_AGENT,
         },
       }

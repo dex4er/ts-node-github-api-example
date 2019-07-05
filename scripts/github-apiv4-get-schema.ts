@@ -2,9 +2,10 @@
 
 /// <reference types="node" />
 
+import "cross-fetch/polyfill"
+
 import JSONstringify from "fast-safe-stringify"
 import fs from "fs"
-import fetch from "node-fetch"
 
 const GITHUB_API_URL = "https://api.github.com/graphql"
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN

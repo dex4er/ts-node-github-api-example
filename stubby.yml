@@ -1,0 +1,10 @@
+- request:
+    url: ^/graphql$
+    method: POST
+    headers:
+      content-type: application/json
+    json: '{"operationName":"Viewer"}'
+  response:
+    headers:
+      content-type: application/json
+    file: stubby/viewer.json

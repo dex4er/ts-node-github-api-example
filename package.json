@@ -32,20 +32,30 @@
     "@graphql-codegen/typescript": "1.3.1",
     "@graphql-codegen/typescript-operations": "^1.3.1",
     "@types/graphql": "^14.2.2",
+    "@types/js-yaml": "^3.12.1",
+    "@types/lodash.escaperegexp": "^4.1.6",
     "@types/node": "^12.0.12",
-    "@types/node-fetch": "^2.3.7",
+    "@types/shelljs": "^0.8.5",
+    "@types/stubby": "^4.1.0",
+    "@types/which": "^1.3.1",
+    "apollo-utilities": "^1.3.2",
     "change-case": "^3.1.0",
     "fast-safe-stringify": "^2.0.6",
     "graphql-codegen-typescript-document-nodes": "^2.0.0",
     "graphql-types": "^1.1.0",
+    "js-yaml": "^3.13.1",
+    "lodash.escaperegexp": "^4.1.2",
     "markdownlint-cli": "^0.17.0",
     "prettier": "^1.18.2",
+    "shelljs": "^0.8.3",
     "shx": "^0.3.2",
+    "stubby": "^4.1.0",
     "ts-node": "^8.3.0",
     "tsconfig-paths": "^3.8.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.5.2"
+    "typescript": "^3.5.2",
+    "which": "^1.3.1"
   },
   "bin": {
     "github-apiv4-viewer-query": "bin/github-apiv4-viewer-query.js"
@@ -60,7 +70,9 @@
     "codegen": "yarn graphql-codegen",
     "compile": "yarn codegen && tsc --pretty --project . && tsc --pretty --project bin && shx sed -i \"s/env ts-node/env node/\" bin/*.js > sed.tmp && shx rm -f sed.tmp",
     "github-apiv4-get-schema": "ts-node --require dotenv/config scripts/github-apiv4-get-schema.ts",
+    "github-apiv4-get-stubby": "ts-node --require dotenv/config scripts/github-apiv4-get-stubby.ts",
     "github-apiv4-viewer-query": "ts-node --require dotenv/config --require tsconfig-paths/register bin/github-apiv4-viewer-query.ts",
+    "github-apiv4-viewer-query:stubby": "ts-node --require dotenv/config --require tsconfig-paths/register scripts/run-with-stubby.ts bin/github-apiv4-viewer-query.ts",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
     "lint": "tsc --noEmit --pretty --project . && tsc --noEmit --pretty --project bin && tsc --noEmit --pretty --project scripts && prettier --ignore-path .gitignore --list-different \"**/*.{json,md,ts,yml}\" \"!**/*.d.ts\" \"!schema/json/**\" && tslint --format stylish --project . && tslint --format stylish --project bin && tslint --format stylish --project scripts && markdownlint \"*.md\"",
     "postpublish": "git tag v$npm_package_version -a -m \"Release v$npm_package_version\" && git push --tags",
@@ -68,7 +80,7 @@
     "prepublishOnly": "yarn test:script",
     "pretest": "yarn codegen && yarn lint",
     "test": "yarn test:script",
-    "test:script": "yarn github-apiv4-viewer-query",
+    "test:script": "yarn github-apiv4-viewer-query:stubby",
     "version": "shx echo \"export const VERSION = \\\"$npm_package_version\\\"\" > lib/version.ts"
   }
 }

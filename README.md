@@ -29,16 +29,29 @@ cp .env.example.sh .env
 edit .env
 ```
 
-### schema
+### schema offline
+
+```shell
+git submodule sync
+git submodule update --init
+```
+
+### schema online
 
 ```shell
 yarn github-apiv4-get-schema
 ```
 
+### stubby
+
+```shell
+yarn github-apiv4-get-stubby
+```
+
 ### typings
 
 ```shell
-yarn graphql-codegen
+yarn codegen
 ```
 
 ### compile
@@ -47,7 +60,13 @@ yarn graphql-codegen
 yarn compile
 ```
 
-### run
+### run offline
+
+```shell
+yarn github-apiv4-viewer-query:stubby
+```
+
+### run online
 
 ```shell
 yarn github-apiv4-viewer-query

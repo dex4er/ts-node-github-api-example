@@ -4,6 +4,7 @@ rm -rf node_modules/*
 yarn install --non-interactive
 
 npm pack
+
 yarn lint
 yarn test:script
 
