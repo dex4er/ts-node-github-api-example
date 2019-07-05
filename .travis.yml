@@ -11,13 +11,14 @@ matrix:
 
 install:
   - set -e
-  - npm install
-  - if [ -n "$NPM_AUDIT" ]; then npm audit; fi
+  - yarn global add yarn
+  - yarn
+  - if [ -n "$NPM_AUDIT" ]; then yarn audit; fi
 
 script:
   - npm pack
-  - if [ -n "$NPM_RUN_LINT" ]; then npm run lint; fi
-  - npm run test:script
+  - if [ -n "$NPM_RUN_LINT" ]; then yarn lint; fi
+  - yarn test:script
   - git diff --stat --exit-code
   - for f in $(git ls-files --others --exclude-standard); do git diff --no-index --stat --exit-code /dev/null $next; done
-  - npm run clean
+  - yarn clean
