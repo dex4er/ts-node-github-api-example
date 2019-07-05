@@ -14,6 +14,9 @@ stages:
   - tag:app
 
 variables:
+  GIT_STRATEGY: fetch
+  GIT_SUBMODULE_STRATEGY: normal
+
   GIT_REPO_APP_URL: "git@gitlab.com:dex4er/ts-node-github-api-example.git"
   GIT_REPO_PACKAGES_URL: "git@gitlab.com:dex4er/ts-node-github-api-example-packages.git"
   NODE_VERSION: "10"
