@@ -14,3 +14,4 @@ generates:
     config:
       namingConvention: change-case#camelCase
       nameSuffix: Query
+      noGraphQLTag: true
