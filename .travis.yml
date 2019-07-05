@@ -9,9 +9,11 @@ matrix:
     - node_js: "10"
     - node_js: "8"
 
+before_install:
+  - npm install -g yarn
+
 install:
   - set -e
-  - yarn global add yarn
   - yarn
   - if [ -n "$NPM_AUDIT" ]; then yarn audit; fi
 
