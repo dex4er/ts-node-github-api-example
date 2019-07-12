@@ -20,5 +20,5 @@
     "target": "esnext",
     "typeRoots": ["node_modules/@types"]
   },
-  "exclude": ["bin", "scripts", "test"]
+  "exclude": ["bin", "scripts"]
 }
