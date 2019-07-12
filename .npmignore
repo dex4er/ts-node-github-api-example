@@ -1,10 +1,8 @@
 *
 
-!**/*.d.ts
 !**/*.js
 !**/*.js.map
 
-/bin/*.d.ts
 /schema/json/**
 
 ts-node-*
