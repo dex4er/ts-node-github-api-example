@@ -6,7 +6,11 @@
 
 <!-- markdownlint-enable MD013 -->
 
-This is example of Github API v4 client written in Typescript with Apollo library.
+This is an example of Github API v4 client written in Typescript with Apollo library.
+
+Additionaly this project provides a Gitlab pipeline configuration which
+produces binary packages stored in artifacts repository:
+<https://gitlab.com/dex4er/ts-node-github-api-example-packages>
 
 ## Requirements
 
@@ -19,7 +23,7 @@ In working directory:
 ### dependencies
 
 ```shell
-npm install
+yarn
 ```
 
 ### token
@@ -34,6 +38,8 @@ edit .env
 ```shell
 git submodule sync
 git submodule update --init
+# to download the latest later:
+git submodule update --remote
 ```
 
 ### schema online
@@ -42,13 +48,13 @@ git submodule update --init
 yarn github-apiv4-get-schema
 ```
 
-### stubby
+### schema download for offline
 
 ```shell
 yarn github-apiv4-get-stubby
 ```
 
-### typings
+### schema to typescript
 
 ```shell
 yarn codegen
@@ -60,7 +66,7 @@ yarn codegen
 yarn compile
 ```
 
-### run offline
+### run offline for testing
 
 ```shell
 yarn github-apiv4-viewer-query:stubby
