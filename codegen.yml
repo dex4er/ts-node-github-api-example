@@ -10,7 +10,7 @@ generates:
       constEnums: true
   operations/index.ts:
     plugins:
-      - graphql-codegen-typescript-document-nodes
+      - typescript-document-nodes
     config:
       namingConvention: change-case#camelCase
       nameSuffix: Query
