@@ -5,6 +5,7 @@
 !**/*.js.map
 
 /bin/*.d.ts
+/schema/json/**
 
 ts-node-*
 
