@@ -23,7 +23,7 @@
     "apollo-link-http": "^1.5.15",
     "apollo-link-retry": "^2.2.14",
     "cross-fetch": "^3.0.4",
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.1.0",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1"
   },
