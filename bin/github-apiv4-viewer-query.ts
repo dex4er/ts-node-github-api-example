@@ -1,17 +1,15 @@
 #!/usr/bin/env ts-node
 
 /// <reference types="node" />
-
-import "cross-fetch/polyfill"
-
-import {ApolloClient} from "apollo-client"
+/// <reference path="../types/global-fetch.d.ts" />
 
 import {InMemoryCache} from "apollo-cache-inmemory"
+import {ApolloClient} from "apollo-client"
 import {ApolloLink} from "apollo-link"
 import {setContext} from "apollo-link-context"
 import {HttpLink} from "apollo-link-http"
 import {RetryLink} from "apollo-link-retry"
-
+import fetch from "cross-fetch"
 import path from "path"
 
 import {VERSION} from "@dex4er/ts-node-github-api-example/lib/version"
@@ -51,6 +49,7 @@ const client = new ApolloClient({
     }),
     new HttpLink({
       uri: GITHUB_API_URL,
+      fetch,
     }),
   ]),
   cache: new InMemoryCache(),

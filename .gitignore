@@ -11,6 +11,8 @@
 /schema/*.json
 /schema/*.ts
 
+!/types/**/*.d.ts
+
 *.gz
 *.tgz
 
