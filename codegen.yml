@@ -8,6 +8,7 @@ generates:
       - typescript-operations
     config:
       constEnums: true
+      immutableTypes: true
       preResolveTypes: true
   operations/index.ts:
     plugins:
