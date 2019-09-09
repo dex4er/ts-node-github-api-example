@@ -1,7 +1,6 @@
 #!/usr/bin/env ts-node
 
 /// <reference types="node" />
-/// <reference path="../types/global-fetch.d.ts" />
 
 import {InMemoryCache} from "apollo-cache-inmemory"
 import {ApolloClient} from "apollo-client"
