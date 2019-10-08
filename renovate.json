@@ -1,6 +1,7 @@
 {
   "extends": [
     "config:base",
+    "group:allNonMajor",
     "group:definitelyTyped",
     "group:linters",
     "group:monorepos",
