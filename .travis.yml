@@ -6,7 +6,7 @@ matrix:
   include:
     - node_js: "node"
       env: NPM_AUDIT=yes NPM_RUN_LINT=yes
-    - node_js: "10"
+    - node_js: "10.24.1"
 
 before_install:
   - npm install -g yarn
